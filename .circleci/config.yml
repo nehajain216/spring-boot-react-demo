@@ -22,7 +22,9 @@ jobs:
     steps:
       - checkout:
           path: ~/spring-boot-react-demo
- 
+      - setup_remote_docker:
+          version: 19.03.13
+          docker_layer_caching: true
       - run: 
           name: Gradle build
           command: gradle build
