@@ -1,0 +1,12 @@
+FROM node:14.17.5
+WORKDIR /app
+COPY package.json /app
+
+###### To use npm######
+COPY package-lock.json /app
+RUN npm install
+#COPY src /app/src
+#COPY public /app/public
+COPY . /app
+EXPOSE 3000
+CMD ["npm", "start"]

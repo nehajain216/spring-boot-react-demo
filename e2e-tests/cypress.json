@@ -1,0 +1,8 @@
+{
+  "baseUrl": "http://localhost:3000",
+  "env": {
+    "username": "neha",
+    "password": "neha123"
+  }
+}
+

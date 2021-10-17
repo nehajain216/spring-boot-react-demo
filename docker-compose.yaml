@@ -1,0 +1,36 @@
+version: '3'
+services:
+  todolist-db:
+    image: "postgres:12.3"
+    ports:
+      - "15432:5432"
+    environment:
+      POSTGRES_DB: todolistdb
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+
+  todolist-api:
+    container_name: todolist-api
+    build:
+      context: ./server
+      dockerfile: Dockerfile
+    ports:
+      - 8080:8080
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:postgresql://todolist-db:5432/todolistdb
+      SPRING_DATASOURCE_USERNAME: postgres
+      SPRING_DATASOURCE_PASSWORD: postgres
+    depends_on:
+      - todolist-db
+    restart: always
+
+  todolist-ui:
+    container_name: todolist-ui
+    build:
+      context: ./client
+      dockerfile: Dockerfile
+    ports:
+      - 3000:3000
+    stdin_open: true
+    depends_on:
+      - todolist-api

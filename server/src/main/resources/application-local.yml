@@ -1,0 +1,7 @@
+spring:
+  datasource:
+    url: jdbc:postgresql://localhost:15432/todolistdb
+    username: postgres
+    password: postgres
+jwt:
+  secret: DEV_JWT_SECRET
