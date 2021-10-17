@@ -26,5 +26,6 @@ workflows:
   workflow:
     jobs:
       - gradle/test:
+          executor: docker-jdk
           app_src_directory: ~/project/server
           
