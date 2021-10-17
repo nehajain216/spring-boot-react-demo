@@ -27,7 +27,7 @@ jobs:
       #    version: 19.03.13
       - run: 
           name: Gradle build
-          command: gradle build
+          command: export TERM=${TERM:-dumb} && gradle build
 workflows:
   workflow:
     jobs:
